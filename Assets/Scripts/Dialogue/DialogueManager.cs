@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public GameObject dialogueObject;
     public bool typingMessage = false;
+    public bool finalMessage = false;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
         sentences.Clear();
         dialogueObject.SetActive(true);
+        finalMessage = false;
 
         foreach (string sentence in dialogue.sentences)
         {
@@ -33,7 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence(NPCController npc)
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && finalMessage)
         {
             if (npc != null) {
                 npc.isTalking = false;
@@ -42,8 +44,11 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+        if (sentences.Count == 0) {
+            finalMessage = true;
+        }
 
-        Debug.Log(sentences.Peek());
+        Debug.Log(sentences.Count);
 
         StopAllCoroutines();
 

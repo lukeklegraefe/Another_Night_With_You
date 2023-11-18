@@ -17,14 +17,14 @@ public class Selector : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             currentPosition++;
             if (currentPosition > maxSize - 1) {
                 currentPosition = minSize;
             }
             this.transform.position = scratchers[currentPosition].transform.position;
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
             currentPosition--;
             if (currentPosition < minSize) {
                 currentPosition = maxSize - 1;
