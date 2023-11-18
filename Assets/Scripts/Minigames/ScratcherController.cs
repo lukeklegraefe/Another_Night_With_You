@@ -6,23 +6,34 @@ public class ScratcherController : MonoBehaviour
 {
     public SpriteRenderer scratchIcon;
     public Animator scratchAnimation;
-    void Start()
-    {
+    private bool scratched = false;
+    public int index;
+    void Start() {
         
     }
 
-    void Update()
-    {
+    void Update() {
         
     }
 
-    public void ScratchOff()
-    {
+    public bool GetState() {
+        return scratched;
+    }
+
+    public void ScratchOff() {
         scratchAnimation.SetTrigger("trigger");
+        scratched = true;
     }
 
-    public void SetIcon(Sprite sprite)
-    {
+    public void SetIcon(Sprite sprite) {
         this.scratchIcon.sprite = sprite;
+    }
+
+    public void SetIndex(int index) {
+        this.index = index;
+    }
+
+    public int GetIndex() {
+        return this.index;
     }
 }

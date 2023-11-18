@@ -35,11 +35,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-            npc.isTalking = false;
+            if (npc != null) {
+                npc.isTalking = false;
+            }
             typingMessage = false;
             EndDialogue();
             return;
         }
+
+        Debug.Log(sentences.Peek());
 
         StopAllCoroutines();
 
@@ -54,7 +58,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    IEnumerator TypeSentence(string sentence)
+    public IEnumerator TypeSentence(string sentence)
     {
         typingMessage = true;
         dialogueText.SetText(sentence);
@@ -69,7 +73,7 @@ public class DialogueManager : MonoBehaviour
 
             if (visibleCount >= totalVisibleCharacters)
             {
-                yield return new WaitForSeconds(0.6f);
+                yield return new WaitForSeconds(0.4f);
             }
             counter += 1;
 

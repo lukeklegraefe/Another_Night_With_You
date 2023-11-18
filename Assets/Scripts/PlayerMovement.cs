@@ -32,5 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void setDisabled(bool disabled) {
         this.disabled = disabled;
+        movement.x = 0;
+        movement.y = 0;
     }
 }
